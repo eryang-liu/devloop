@@ -1,6 +1,7 @@
 {
   "name": "devloop",
   "private": true,
+  "description": "The bilingual antidote to AI developer anxiety: capture AI-driven requirements into living PRDs, verification evidence, and release confidence.",
   "packageManager": "pnpm@10.0.0",
   "scripts": {
     "build": "pnpm -r build",

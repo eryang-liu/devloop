@@ -1,6 +1,7 @@
 {
   "name": "@devloop/cli",
   "version": "0.1.0",
+  "description": "Requirement-first dev loop for AI builders: capture requests, evolve PRDs, and verify releases with confidence.",
   "type": "module",
   "files": [
     "dist"
