@@ -1,0 +1,6 @@
+id: local-api-smoke
+name: Local API Smoke
+scope: impacted
+description: Validate that the Fastify layer exposes the expected local endpoints.
+entrypoints:
+  - packages/server/src/app.ts

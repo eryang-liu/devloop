@@ -1,0 +1,36 @@
+version: 1
+project_name: fixture-app
+paths:
+  registry: .devloop/registry.json
+  prd_root: docs/prd
+  scenarios: .devloop/scenarios
+  test_runs: .devloop/test-runs
+  releases: .devloop/releases
+impact:
+  use_import_graph: false
+  fallback_to_paths: true
+  low_confidence_requires_triage: true
+gate:
+  block_on_p0_untested: true
+  require_head_smoke_pass: true
+  require_scenario_for_p0: true
+test:
+  smoke_scenarios:
+    - app-smoke-local
+features:
+  - id: host-listen
+    name: 宿主聆听
+    priority: P0
+    tags: ["audio"]
+    paths: ["frontend/src/hostListen.tsx"]
+    specs: ["docs/prd/host-listen.md"]
+    scenarios: ["host-listen-smoke"]
+    invariants: ["开麦后系统有响应"]
+  - id: embed-shell
+    name: 嵌入壳
+    priority: P1
+    tags: ["embed"]
+    paths: ["frontend/src/embedShell.tsx"]
+    specs: ["docs/prd/embed-shell.md"]
+    scenarios: ["embed-shell-smoke"]
+    invariants: []

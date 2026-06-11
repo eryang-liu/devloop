@@ -1,0 +1,20 @@
+{
+  "name": "@devloop/cli",
+  "version": "0.1.0",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "bin": {
+    "devloop": "dist/main.js"
+  },
+  "scripts": {
+    "build": "node --input-type=module -e \"import { rm } from 'node:fs/promises'; await rm('dist', { recursive: true, force: true });\" && pnpm --filter @devloop/server build && tsc -p tsconfig.json && pnpm --filter @devloop/ui build && pnpm --filter @devloop/console build && node --input-type=module -e \"import { cp } from 'node:fs/promises'; await cp('../ui/dist', 'dist/ui', { recursive: true }); await cp('../console/dist', 'dist/console', { recursive: true });\"",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@devloop/core": "workspace:*",
+    "@devloop/server": "workspace:*",
+    "commander": "^14.0.0"
+  }
+}

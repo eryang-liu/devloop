@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "lastSyncAt": "2026-06-10T09:00:00.000Z",
+  "impactQueue": [],
+  "features": [
+    {
+      "featureId": "host-listen",
+      "status": "changed_untested",
+      "iteration": 1,
+      "activeChecklist": ["L-01 开麦"],
+      "lastChangedAt": "2026-06-10T08:58:00.000Z",
+      "lastChangedSha": "abc1234",
+      "lastVerifiedRunId": null,
+      "lastVerifiedSha": null
+    },
+    {
+      "featureId": "embed-shell",
+      "status": "tested",
+      "iteration": 1,
+      "activeChecklist": ["E-01 页面可打开"],
+      "lastChangedAt": "2026-06-09T08:58:00.000Z",
+      "lastChangedSha": "old1111",
+      "lastVerifiedRunId": "run-smoke-pass",
+      "lastVerifiedSha": "old1111"
+    }
+  ]
+}

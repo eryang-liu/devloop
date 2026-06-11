@@ -1,0 +1,7 @@
+id: cli-command-smoke
+name: CLI Command Smoke
+scope: impacted
+description: Validate that the primary DevLoop CLI commands remain callable.
+entrypoints:
+  - packages/cli/src/main.ts
+  - packages/cli/src/commands/ui.ts

@@ -1,0 +1,8 @@
+id: devloop-workspace-smoke
+name: DevLoop Workspace Smoke
+scope: smoke
+description: Basic workspace health for the DevLoop tool on itself.
+entrypoints:
+  - doctor
+  - status
+  - ui

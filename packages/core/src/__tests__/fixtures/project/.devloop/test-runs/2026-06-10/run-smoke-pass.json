@@ -1,0 +1,8 @@
+{
+  "run_id": "run-smoke-pass",
+  "status": "passed",
+  "commit_sha": "old1111",
+  "scenario_ids": ["app-smoke-local"],
+  "scope": "smoke",
+  "artifacts": ["logs/smoke.txt"]
+}

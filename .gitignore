@@ -1,0 +1,11 @@
+node_modules/
+dist/
+packages/*/dist/
+coverage/
+.DS_Store
+
+# Local DevLoop runtime state
+.devloop/registry.json
+.devloop/iterations/
+.devloop/test-runs/
+docs/prd/

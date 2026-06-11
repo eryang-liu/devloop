@@ -1,0 +1,99 @@
+version: 1
+project_name: devloop
+paths:
+  # Iteration machine records live under .devloop/iterations alongside the registry.
+  registry: .devloop/registry.json
+  # Human-readable PRDs are written under docs/prd/YYYY-MM-DD/.
+  prd_root: docs/prd
+  scenarios: .devloop/scenarios
+  test_runs: .devloop/test-runs
+  releases: .devloop/releases
+impact:
+  use_import_graph: false
+  fallback_to_paths: true
+  low_confidence_requires_triage: true
+gate:
+  block_on_p0_untested: true
+  require_head_smoke_pass: true
+  require_scenario_for_p0: true
+  strict_snapshot: false
+test:
+  smoke_scenarios:
+    - devloop-workspace-smoke
+features:
+  - id: core-engine
+    name: Core Engine
+    priority: P0
+    tags: ["core", "registry", "gate"]
+    paths:
+      - packages/core/src
+    specs:
+      - PRD-dev-loop.md
+      - docs/superpowers/plans/2026-06-10-devloop-m1-implementation.md
+    scenarios:
+      - devloop-workspace-smoke
+      - core-registry-smoke
+    invariants:
+      - sync, status, and release-check derive from the same machine truth
+  - id: cli-runtime
+    name: CLI Runtime
+    priority: P0
+    tags: ["cli", "orchestration"]
+    paths:
+      - packages/cli/src
+    specs:
+      - PRD-dev-loop.md
+      - docs/superpowers/plans/2026-06-10-devloop-m1-implementation.md
+    scenarios:
+      - devloop-workspace-smoke
+      - cli-command-smoke
+    invariants:
+      - doctor, status, sync, release-check, and ui stay reachable from one CLI
+  - id: local-api
+    name: Local API
+    priority: P1
+    tags: ["server", "fastify"]
+    paths:
+      - packages/server/src
+    specs:
+      - PRD-dev-loop.md
+      - docs/superpowers/plans/2026-06-10-devloop-m1-implementation.md
+    scenarios:
+      - local-api-smoke
+    invariants:
+      - browser UI and CLI share the same project truth via same-origin APIs
+  - id: browser-dashboard
+    name: Browser Dashboard
+    priority: P1
+    tags: ["ui", "dashboard"]
+    paths:
+      - packages/ui/src
+      - packages/ui/index.html
+      - packages/ui/vite.config.ts
+    specs:
+      - PRD-dev-loop.md
+      - docs/superpowers/plans/2026-06-10-devloop-m1-implementation.md
+    scenarios:
+      - browser-dashboard-smoke
+    invariants:
+      - dashboard reflects status, gate, and impact without duplicating backend logic
+  - id: default-console
+    name: Default Console
+    priority: P1
+    tags: ["console", "entry", "workflow"]
+    paths:
+      - packages/console/src
+      - packages/console/index.html
+      - packages/server/src/console-app.ts
+      - packages/server/src/console-actions.ts
+      - packages/server/src/console-workflows.ts
+      - packages/cli/src/commands/console.ts
+      - packages/cli/src/main.ts
+    specs:
+      - PRD-dev-loop.md
+      - docs/superpowers/specs/2026-06-11-devloop-default-console-entry-design.md
+      - docs/superpowers/plans/2026-06-11-devloop-default-console-entry.md
+    scenarios:
+      - default-console-smoke
+    invariants:
+      - bare devloop opens the control console with working action and workflow APIs

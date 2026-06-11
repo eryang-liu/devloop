@@ -1,0 +1,8 @@
+id: core-registry-smoke
+name: Core Registry Smoke
+scope: impacted
+description: Validate that config, registry, and release state can be loaded consistently.
+entrypoints:
+  - packages/core/src/config.ts
+  - packages/core/src/registry.ts
+  - packages/core/src/release-check.ts
